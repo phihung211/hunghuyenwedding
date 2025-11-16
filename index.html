@@ -46,7 +46,7 @@
       padding: 20px 14px 80px;
     }
 
-    /* Hero */
+    /* HERO */
 
     .hero-card {
       display: grid;
@@ -58,6 +58,8 @@
       box-shadow: var(--shadow-card);
       border: 1px solid #f0f0f6;
       margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-media {
@@ -66,6 +68,7 @@
       overflow: hidden;
       background: #000;
       min-height: 260px;
+      isolation: isolate;
     }
 
     .hero-media img {
@@ -73,12 +76,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transform: scale(1.02);
-      transition: transform 4s ease-out;
+      transform: scale(1.03);
+      transition: transform 5s ease-out;
     }
 
-    .hero-media:hover img {
-      transform: scale(1.05);
+    .hero-card:hover .hero-media img {
+      transform: scale(1.06);
     }
 
     .badge-top {
@@ -93,7 +96,68 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       border: 1px solid #f3d3ce;
+      z-index: 3;
     }
+
+    /* HEARTS OVERLAY */
+
+    .heart-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .heart {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 94, 120, 0.9);
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: fall 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: inherit;
+      border-radius: 50%;
+      top: -9px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -9px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-40px) rotate(45deg) scale(0.6);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(260px) rotate(45deg) scale(0.9);
+        opacity: 0;
+      }
+    }
+
+    .heart:nth-child(1) { left: 12%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 28%; animation-delay: 1.2s; animation-duration: 12s; }
+    .heart:nth-child(3) { left: 46%; animation-delay: 2.4s; animation-duration: 11s; }
+    .heart:nth-child(4) { left: 64%; animation-delay: 3.6s; animation-duration: 13s; }
+    .heart:nth-child(5) { left: 80%; animation-delay: 4.2s; animation-duration: 12s; }
 
     .hero-body {
       display: flex;
@@ -119,14 +183,12 @@
       color: #222;
     }
 
-    .hero-names span {
-      display: block;
-    }
+    .hero-names span { display: block; }
 
     .hero-intro {
       font-size: 0.96rem;
       color: var(--text-main);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .hero-intro a {
@@ -137,9 +199,9 @@
     }
 
     .hero-note {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .hero-actions {
@@ -205,7 +267,7 @@
     .section-title {
       font-family: "Playfair Display", "Times New Roman", serif;
       font-size: 1.35rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: #222;
     }
 
@@ -260,6 +322,16 @@
     .person-meta p {
       font-size: 0.86rem;
       color: var(--text-muted);
+    }
+
+    .about-story {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .about-story p + p {
+      margin-top: 6px;
     }
 
     .timeline-grid {
@@ -428,7 +500,17 @@
     <div class="hero-media">
       <div class="badge-top">Wedding Invitation</div>
       <img src="couple-2.JPG" alt="Mạnh Hùng &amp; Phạm Huyền">
+
+      <!-- Tim rơi -->
+      <div class="heart-overlay">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+      </div>
     </div>
+
     <div class="hero-body">
       <div class="hero-date">29 – 30 . 11 . 2025</div>
       <div class="hero-names">
@@ -489,10 +571,22 @@
       </div>
     </div>
 
+    <div class="about-story">
+      <p>
+        Từ những ngày đầu quen nhau, Hùng và Huyền đã đồng hành qua rất nhiều cột mốc: 
+        những buổi hẹn hò giản dị, những chuyến đi xa, và cả những lúc phải động viên 
+        nhau vượt qua áp lực công việc, cuộc sống.
+      </p>
+      <p>
+        Sau chặng đường ấy, chúng mình nhận ra điều quý giá nhất không phải là 
+        những điều hoành tráng, mà là người luôn ở bên cạnh, lắng nghe và cùng 
+        mình trưởng thành mỗi ngày. Đám cưới này là dấu mốc để cả hai bước tiếp 
+        một hành trình mới – hành trình gia đình nhỏ mang tên <strong>Hùng &amp; Huyền</strong>.
+      </p>
+    </div>
+
     <p class="note" style="margin-top: 14px;">
-      Sau nhiều năm bên nhau, chúng mình quyết định viết tiếp chặng đường mới trong 
-      một mái nhà chung. Hy vọng sẽ nhận được lời chúc phúc và sự hiện diện của 
-      mọi người trong ngày cưới.
+      Hy vọng sẽ nhận được lời chúc phúc và sự hiện diện của mọi người trong ngày vui sắp tới. 💌
     </p>
   </section>
 
