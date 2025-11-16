@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thiệp cưới | Mạnh Hùng & Phạm Huyền</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f9f9fb;
+      --card: #ffffff;
+      --text-main: #333333;
+      --text-sub: #777777;
+      --accent: #b63a3a;      /* đỏ trầm giống thiệp in */
+      --accent-soft: #e7d7d7;
+      --border: #e5e5ea;
+      --shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff, var(--bg));
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 16px 40px;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 260px;
+      background: #000;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-content {
+      padding: 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero-names {
+      font-family: "Times New Roman", "Georgia", serif;
+      font-size: 30px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .hero-names span {
+      display: block;
+    }
+
+    .hero-date {
+      font-size: 15px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+
+    .hero-divider {
+      width: 64px;
+      height: 2px;
+      background: var(--accent);
+      margin: 4px 0 8px;
+    }
+
+    .hero-text {
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .hero-text strong {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .hero-bottom {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 8px 16px;
+      border: 1px solid var(--accent-soft);
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn span.icon {
+      font-size: 16px;
+    }
+
+    /* Section */
+    section {
+      margin-top: 24px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 20px 20px 22px;
+    }
+
+    section + section {
+      margin-top: 18px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .section-heading {
+      font-family: "Times New Roman", "Georgia", serif;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .muted {
+      color: var(--text-sub);
+      font-size: 14px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .card-soft {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 12px 12px 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 3px 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .detail-list {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .detail-list div {
+      margin-bottom: 4px;
+    }
+
+    .detail-label {
+      font-weight: 600;
+    }
+
+    .calendar {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--accent-soft);
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .highlight-date {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .gallery-grid img {
+      border-radius: 12px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-main {
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    /* Audio */
+    .audio-box {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px dashed var(--accent-soft);
+      background: #fefefe;
+      font-size: 12px;
+      color: var(--text-sub);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-content {
+        padding: 18px 18px 20px;
+      }
+      .hero-names {
+        font-size: 26px;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .page {
+        padding: 12px 10px 30px;
+      }
+      section {
+        padding: 16px 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-photo">
+        <!-- Ảnh đôi chính -->
+        <img src="couple-main.jpg" alt="Mạnh Hùng & Phạm Huyền" />
+        <div class="hero-badge">Wedding Invitation</div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-date">29 – 30 . 11 . 2025</div>
+        <div class="hero-divider"></div>
+        <div class="hero-names">
+          <span>Mạnh Hùng</span>
+          <span>&amp;</span>
+          <span>Phạm Huyền</span>
+        </div>
+        <p class="hero-text">
+          Chúng mình hân hạnh thông báo lễ thành hôn và rất mong được đón tiếp
+          <strong>Quý anh/chị và các bạn</strong> cùng chung vui trong ngày trọng đại.
+        </p>
+        <p class="hero-sub">
+          Sự hiện diện của mọi người là món quà ý nghĩa nhất dành cho chúng mình.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#events">
+            <span class="icon">📅</span>
+            Xem thời gian &amp; địa điểm
+          </a>
+          <a class="btn" href="#gallery">
+            <span class="icon">📷</span>
+            Album nhỏ
+          </a>
+        </div>
+
+        <div class="hero-bottom">
+          Thay lời mời, xin gửi tới anh/chị lời chúc sức khoẻ và hẹn gặp lại trong ngày vui!
+        </div>
+      </div>
+    </header>
+
+    <!-- GIỚI THIỆU -->
+    <section id="about">
+      <div class="section-title">Chúng mình</div>
+      <div class="section-heading">Một chút về cô dâu &amp; chú rể</div>
+      <div class="two-col" style="margin-top: 14px;">
+        <div class="card-soft" style="display:flex; gap:10px; align-items:center;">
+          <img src="groom.jpg" alt="Chú rể Mạnh Hùng"
+               style="width:88px;height:88px;border-radius:999px;object-fit:cover;">
+          <div>
+            <div class="pill">Chú rể</div>
+            <div style="margin-top:4px;font-weight:600;">Mạnh Hùng</div>
+            <div class="muted" style="margin-top:2px;">
+              Điềm tĩnh, ấm áp và luôn là người lên kế hoạch cho mọi thứ – kể cả buổi hẹn hò đầu tiên.
+            </div>
+          </div>
+        </div>
+        <div class="card-soft" style="display:flex; gap:10px; align-items:center;">
+          <img src="bride.jpg" alt="Cô dâu Phạm Huyền"
+               style="width:88px;height:88px;border-radius:999px;object-fit:cover;">
+          <div>
+            <div class="pill">Cô dâu</div>
+            <div style="margin-top:4px;font-weight:600;">Phạm Huyền</div>
+            <div class="muted" style="margin-top:2px;">
+              Tươi cười, giàu tình cảm và là người giữ cho mọi khoảnh khắc luôn nhẹ nhàng, đầy tiếng cười.
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:12px;">
+        Sau nhiều hành trình bên nhau, chúng mình quyết định đi tiếp chặng đường mới trong vai trò vợ chồng.
+        Hy vọng sẽ nhận được lời chúc phúc và sự hiện diện của mọi người trong ngày cưới.
+      </p>
+    </section>
+
+    <!-- SỰ KIỆN -->
+    <section id="events">
+      <div class="section-title">Lịch cưới</div>
+      <div class="section-heading">Thời gian &amp; địa điểm</div>
+
+      <div class="two-col">
+        <!-- Nhà gái -->
+        <div class="card-soft">
+          <div class="pill">Nhà gái – Quảng Ninh</div>
+          <div class="detail-list">
+            <div><span class="detail-label">Thời gian:</span> 10:30, Thứ Bảy <strong>29.11.2025</strong></div>
+            <div><span class="detail-label">Địa điểm:</span> Nhà hàng Vinadeco,<br>
+              Trần Nhân Tông – Phường Quảng Yên – Tỉnh Quảng Ninh
+            </div>
+            <div><span class="detail-label">Gia đình nhà gái:</span> Ông Phạm Văn Chít &amp; Bà Phạm Thị Mùi</div>
+          </div>
+          <div class="calendar">
+            <span class="highlight-date">Save the date • 29.11.2025</span><br>
+            Rất mong được đón tiếp Quý khách tới chung vui cùng gia đình nhà gái.
+          </div>
+        </div>
+
+        <!-- Nhà trai -->
+        <div class="card-soft">
+          <div class="pill">Nhà trai – Hà Nội</div>
+          <div class="detail-list">
+            <div><span class="detail-label">Thời gian:</span> 11:00, Chủ Nhật <strong>30.11.2025</strong></div>
+            <div><span class="detail-label">Địa điểm:</span> Nhà văn hoá Thượng Cát,<br>
+              Thượng Cát – TP. Hà Nội
+            </div>
+            <div><span class="detail-label">Gia đình nhà trai:</span> Ông Ngô Văn Dương &amp; Bà Ngô Thị Hải</div>
+          </div>
+          <div class="calendar">
+            <span class="highlight-date">Save the date • 30.11.2025</span><br>
+            Trân trọng kính mời Quý khách tới dự bữa cơm thân mật cùng gia đình chúng tôi.
+          </div>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:12px;">
+        Để thuận tiện sắp xếp, anh/chị có thể phản hồi trực tiếp cho Hùng hoặc Huyền qua tin nhắn/điện thoại.
+        Mọi lời chúc phúc đều là niềm vinh hạnh lớn với hai chúng mình.
+      </p>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="section-title">Album</div>
+      <div class="section-heading">Một vài khoảnh khắc</div>
+
+      <div class="gallery-main">
+        <img src="couple-1.jpg" alt="Ảnh cưới Mạnh Hùng & Phạm Huyền" />
+      </div>
+      <div class="gallery-grid">
+        <img src="couple-2.jpg" alt="Ảnh cưới 2" />
+        <img src="couple-3.jpg" alt="Ảnh cưới 3" />
+        <img src="couple-main.jpg" alt="Ảnh cưới 4" />
+      </div>
+
+      <p class="muted" style="margin-top:10px;">
+        Hy vọng trong ngày gặp lại, chúng ta sẽ có thêm nhiều bức ảnh đẹp và những câu chuyện vui bên nhau.
+      </p>
+    </section>
+
+    <!-- NHẠC -->
+    <section id="music">
+      <div class="section-title">Nhạc nền</div>
+      <div class="section-heading">Giai điệu nho nhỏ</div>
+      <div class="audio-box">
+        <div>Nhạc không lời để thiệp thêm ấm áp. Một số trình duyệt sẽ không tự phát, bạn có thể bấm Play.</div>
+        <!-- Đặt file bg-music.mp3 cùng thư mục với file HTML -->
+        <audio controls>
+          <source src="bg-music.mp3" type="audio/mpeg" />
+          Trình duyệt của bạn không hỗ trợ phát nhạc.
+        </audio>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 Mạnh Hùng &amp; Phạm Huyền • Cảm ơn vì đã ở bên chúng mình trong ngày đặc biệt này.
+    </footer>
+  </div>
+</body>
+</html>
