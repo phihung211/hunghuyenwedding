@@ -5,17 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thiệp cưới Mạnh Hùng &amp; Phạm Huyền</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #c0392b;
+      --primary-soft: #fbecec;
+      --accent: #f2c94c;
+      --bg: #f7f7fb;
+      --text-main: #333;
+      --text-muted: #777;
+      --radius-lg: 24px;
+      --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.08);
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f9f9fb;
-      color: #333;
+      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #fff9f7, #f4f6ff);
+      color: var(--text-main);
       line-height: 1.6;
       scroll-behavior: smooth;
     }
@@ -26,254 +41,380 @@
     }
 
     .page {
-      max-width: 900px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 24px 16px 80px;
+      padding: 20px 14px 80px;
     }
 
-    header {
-      text-align: center;
-      padding: 24px 0 16px;
+    /* Hero */
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+      gap: 20px;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid #f0f0f6;
+      margin-bottom: 22px;
     }
 
-    .names {
-      font-family: "Times New Roman", "Playfair Display", serif;
-      font-size: 2.2rem;
-      letter-spacing: 0.06em;
+    .hero-media {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+      min-height: 260px;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.02);
+      transition: transform 4s ease-out;
+    }
+
+    .hero-media:hover img {
+      transform: scale(1.05);
+    }
+
+    .badge-top {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #fff;
+      color: var(--primary);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      border: 1px solid #f3d3ce;
     }
 
-    .ampersand {
-      color: #c0392b;
-      font-weight: 600;
-      margin: 0 4px;
+    .hero-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6px 4px 4px;
     }
 
-    .subtitle {
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
+    .hero-date {
+      font-size: 0.85rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #888;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-names {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .hero-names span {
+      display: block;
+    }
+
+    .hero-intro {
+      font-size: 0.96rem;
+      color: var(--text-main);
       margin-bottom: 12px;
     }
 
-    .date-badge {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid #e5e5ef;
-      padding: 8px 18px;
+    .hero-intro a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .hero-note {
       font-size: 0.85rem;
-      color: #555;
-      gap: 2px;
-      background: #fff;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      color: var(--text-muted);
+      margin-bottom: 14px;
     }
 
-    .date-badge strong {
-      font-size: 0.95rem;
-      color: #c0392b;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    hr.divider {
+    .btn {
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
       border: none;
-      border-top: 1px solid #eee;
-      margin: 18px auto 16px;
-      max-width: 260px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
     }
 
-    .main-photo {
-      margin: 12px auto 24px;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(192, 57, 43, 0.25);
     }
 
-    .main-photo img {
-      width: 100%;
-      display: block;
-      height: auto;
+    .btn-primary:hover {
+      background: #a93226;
+      transform: translateY(-1px);
     }
 
-    .section {
+    .btn-ghost {
+      background: #fff;
+      color: var(--text-main);
+      border: 1px solid #eee;
+    }
+
+    .btn-ghost:hover {
+      border-color: #ddd;
+      background: #fafafa;
+    }
+
+    /* Sections */
+
+    .section-card {
       background: #ffffff;
-      border-radius: 18px;
-      padding: 20px 18px;
-      margin-top: 18px;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.04);
-      border: 1px solid #f0f0f5;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid #f0f0f6;
+      margin-bottom: 22px;
     }
 
-    .section-title {
-      font-size: 1rem;
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #999;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-family: "Times New Roman", "Playfair Display", serif;
-      font-size: 1.4rem;
-      text-align: center;
+      color: var(--text-muted);
       margin-bottom: 4px;
     }
 
-    .section p {
-      font-size: 0.95rem;
-      text-align: center;
-      color: #555;
+    .section-title {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      color: #222;
     }
 
-    .section p + p {
-      margin-top: 4px;
-    }
-
-    .highlight {
-      color: #c0392b;
-      font-weight: 600;
-    }
-
-    .timing {
-      margin-top: 10px;
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    .timing strong {
-      font-weight: 600;
-    }
-
-    .two-cols {
+    .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 8px;
     }
 
-    .card {
-      border-radius: 16px;
+    .person-card {
+      border-radius: 18px;
       background: #fafafa;
-      border: 1px dashed #e0e0ea;
-      padding: 14px 12px;
-      font-size: 0.9rem;
-    }
-
-    .card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #c0392b;
-    }
-
-    .card p {
-      text-align: left;
-      margin: 2px 0;
-    }
-
-    .gallery {
+      padding: 12px 12px 14px;
+      border: 1px solid #eeeeff;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 58px minmax(0,1fr);
       gap: 10px;
-      margin-top: 16px;
+      align-items: center;
     }
 
-    .gallery img {
-      width: 100%;
+    .person-photo {
+      width: 58px;
+      height: 58px;
       border-radius: 14px;
-      display: block;
-      object-fit: cover;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .person-photo img {
+      width: 100%;
       height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .person-meta small {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .person-meta h3 {
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+    }
+
+    .person-meta p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .event-card {
+      border-radius: 18px;
+      border: 1px solid #eee;
+      padding: 12px 12px 14px;
+      background: #fafafa;
+      position: relative;
+    }
+
+    .event-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .event-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .event-row {
+      font-size: 0.86rem;
+      color: var(--text-main);
+    }
+
+    .event-row + .event-row {
+      margin-top: 2px;
+    }
+
+    .save-date {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--primary);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+      height: 100%;
+      object-fit: cover;
     }
 
     .note {
-      margin-top: 18px;
-      font-size: 0.9rem;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
       text-align: center;
-      color: #777;
     }
 
     footer {
-      margin-top: 26px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #777;
+      margin-top: 20px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
     }
 
     footer strong {
-      font-weight: 600;
-      color: #c0392b;
+      color: var(--primary);
     }
+
+    /* Music toggle */
 
     .music-toggle {
       position: fixed;
-      right: 16px;
-      bottom: 20px;
+      right: 14px;
+      bottom: 18px;
       z-index: 100;
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,0.98);
       border-radius: 999px;
-      padding: 8px 14px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.16);
+      padding: 7px 14px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.25);
       display: flex;
       align-items: center;
       gap: 8px;
-      cursor: pointer;
       border: 1px solid #eee;
-      backdrop-filter: blur(10px);
+      cursor: pointer;
       font-size: 0.9rem;
+      backdrop-filter: blur(10px);
     }
 
     .music-badge {
       width: 20px;
       height: 20px;
       border-radius: 999px;
-      border: 2px solid #c0392b;
+      border: 2px solid var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 10px;
-      color: #c0392b;
-    }
-
-    .music-toggle span {
-      white-space: nowrap;
+      color: var(--primary);
     }
 
     .music-toggle.paused {
-      opacity: 0.75;
+      opacity: 0.8;
     }
 
-    @media (max-width: 640px) {
+    /* Responsive */
+
+    @media (max-width: 768px) {
       .page {
-        padding: 16px 12px 70px;
+        padding: 14px 10px 72px;
       }
 
-      .names {
-        font-size: 1.6rem;
+      .hero-card {
+        grid-template-columns: minmax(0,1fr);
+        padding: 14px 12px 16px;
+        border-radius: 18px;
       }
 
-      .main-photo {
-        margin-top: 8px;
+      .hero-body {
+        padding: 4px 2px 2px;
       }
 
-      .two-cols {
-        grid-template-columns: 1fr;
+      .hero-names {
+        font-size: 1.7rem;
       }
 
-      .gallery {
-        grid-template-columns: 1fr 1fr;
+      .section-card {
+        padding: 14px 12px 16px;
+        border-radius: 18px;
+      }
+
+      .about-grid,
+      .timeline-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0,1fr);
       }
 
       .music-toggle {
         right: 10px;
         bottom: 14px;
-        padding: 7px 12px;
       }
     }
   </style>
@@ -281,102 +422,138 @@
 <body>
 
 <div class="page">
-  <header>
-    <div class="subtitle">Thiệp cưới</div>
-    <div class="names">
-      Mạnh Hùng<span class="ampersand">&amp;</span>Phạm Huyền
-    </div>
-    <div class="date-badge">
-      <span>LỄ THÀNH HÔN</span>
-      <strong>29 &amp; 30.11.2025</strong>
-      <span>Hà Nội &amp; Quảng Ninh</span>
-    </div>
-    <hr class="divider" />
-  </header>
 
-  <!-- Ảnh chính -->
-  <div class="main-photo">
-    <img src="couple-2.JPG" alt="Mạnh Hùng &amp; Phạm Huyền" />
-  </div>
+  <!-- HERO -->
+  <section class="hero-card" id="top">
+    <div class="hero-media">
+      <div class="badge-top">Wedding Invitation</div>
+      <img src="couple-2.JPG" alt="Mạnh Hùng &amp; Phạm Huyền">
+    </div>
+    <div class="hero-body">
+      <div class="hero-date">29 – 30 . 11 . 2025</div>
+      <div class="hero-names">
+        <span>MẠNH HÙNG</span>
+        <span>&amp;</span>
+        <span>PHẠM HUYỀN</span>
+      </div>
+      <p class="hero-intro">
+        Chúng mình hân hạnh thông báo lễ thành hôn và rất mong nhận được đón tiếp 
+        <a>Quý anh/chị và các bạn</a> cùng chung vui trong ngày trọng đại.
+      </p>
+      <p class="hero-note">
+        Sự hiện diện của mọi người sẽ là món quà ý nghĩa nhất dành cho chúng mình. 🕊
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'})">
+          📍 Xem thời gian &amp; địa điểm
+        </button>
+        <button class="btn btn-ghost" onclick="document.getElementById('album').scrollIntoView({behavior:'smooth'})">
+          📷 Album nhỏ
+        </button>
+      </div>
+    </div>
+  </section>
 
-  <!-- Lời mời -->
-  <section class="section">
-    <div class="section-title">Lời mời</div>
-    <h2>Trân trọng kính mời</h2>
-    <p>
-      Thay cho tấm thiệp hồng, chúng em xin gửi đến Anh/Chị/ Bạn
-      lời mời tham dự ngày vui của chúng em.
-    </p>
-    <p class="note">
-      Sự hiện diện của Anh/Chị/Bạn là niềm vinh hạnh và hạnh phúc
-      lớn lao đối với gia đình hai bên.
+  <!-- ABOUT -->
+  <section class="section-card" id="about">
+    <div class="section-label">Chúng mình</div>
+    <div class="section-title">Một chút về cô dâu &amp; chú rể</div>
+
+    <div class="about-grid">
+      <div class="person-card">
+        <div class="person-photo">
+          <img src="groom.JPG" alt="Chú rể Mạnh Hùng">
+        </div>
+        <div class="person-meta">
+          <small>Chú rể</small>
+          <h3>Mạnh Hùng</h3>
+          <p>
+            Điềm tĩnh, ấm áp và luôn nỗ lực hết mình cho mọi thứ – kể cả 
+            bữa cơm nhỏ bên gia đình.
+          </p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-photo">
+          <img src="bride.JPG" alt="Cô dâu Phạm Huyền">
+        </div>
+        <div class="person-meta">
+          <small>Cô dâu</small>
+          <h3>Phạm Huyền</h3>
+          <p>
+            Vui cười, giàu tình cảm và là người giữ cho mọi khoảnh khắc luôn 
+            nhẹ nhàng, đầy tiếng cười.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top: 14px;">
+      Sau nhiều năm bên nhau, chúng mình quyết định viết tiếp chặng đường mới trong 
+      một mái nhà chung. Hy vọng sẽ nhận được lời chúc phúc và sự hiện diện của 
+      mọi người trong ngày cưới.
     </p>
   </section>
 
-  <!-- Thông tin 2 nhà -->
-  <section class="section">
+  <!-- SCHEDULE -->
+  <section class="section-card" id="schedule">
+    <div class="section-label">Lịch cưới</div>
     <div class="section-title">Thời gian &amp; địa điểm</div>
 
-    <div class="two-cols">
-      <div class="card">
-        <h3>Nhà gái</h3>
-        <p><strong>Cô dâu:</strong> Phạm Huyền</p>
-        <p><strong>Chú rể:</strong> Mạnh Hùng</p>
-        <p style="margin-top:6px;">
-          <strong>Thời gian:</strong> 10:30 – Thứ Bảy<br />
-          <span class="highlight">29.11.2025</span>
-        </p>
-        <p>
-          <strong>Địa điểm:</strong><br />
-          Nhà hàng Vinadeco<br />
-          Trần Nhân Tông, phường Quảng Yên,<br />
-          thị xã Quảng Yên, Quảng Ninh
-        </p>
+    <div class="timeline-grid">
+      <div class="event-card">
+        <div class="event-tag">Nhà gái – Quảng Ninh</div>
+        <div class="event-title">Lễ cưới nhà gái</div>
+        <p class="event-row"><strong>Thời gian:</strong> 10:30, Thứ Bảy 29.11.2025</p>
+        <p class="event-row"><strong>Địa điểm:</strong> Nhà hàng Vinadeco,<br>
+          Trần Nhân Tông – phường Quảng Yên,<br>
+          thị xã Quảng Yên, tỉnh Quảng Ninh.</p>
+        <p class="event-row"><strong>Gia đình nhà gái:</strong> Ông Phạm Văn Chít &amp; Bà Phạm Thị Mùi</p>
+        <p class="save-date">Save the date: 29.11.2025 – rất mong được đón tiếp Quý khách tới chung vui cùng gia đình nhà gái.</p>
       </div>
 
-      <div class="card">
-        <h3>Nhà trai</h3>
-        <p><strong>Chú rể:</strong> Mạnh Hùng</p>
-        <p><strong>Cô dâu:</strong> Phạm Huyền</p>
-        <p style="margin-top:6px;">
-          <strong>Thời gian:</strong> 11:00 – Chủ Nhật<br />
-          <span class="highlight">30.11.2025</span>
-        </p>
-        <p>
-          <strong>Địa điểm:</strong><br />
-          Nhà văn hoá Thượng Cát<br />
-          Thượng Cát – TP. Hà Nội
-        </p>
+      <div class="event-card">
+        <div class="event-tag">Nhà trai – Hà Nội</div>
+        <div class="event-title">Lễ cưới nhà trai</div>
+        <p class="event-row"><strong>Thời gian:</strong> 11:00, Chủ Nhật 30.11.2025</p>
+        <p class="event-row"><strong>Địa điểm:</strong> Nhà văn hoá Thượng Cát,<br>
+          Thượng Cát – TP. Hà Nội.</p>
+        <p class="event-row"><strong>Gia đình nhà trai:</strong> Ông Ngô Văn Dương &amp; Bà Ngô Thị Hải</p>
+        <p class="save-date">Save the date: 30.11.2025 – rất mong được đón tiếp Quý khách tới chung vui cùng gia đình nhà trai.</p>
       </div>
     </div>
 
-    <p class="timing">
-      <strong>Rất hân hạnh được đón tiếp!</strong>
+    <p class="note">
+      Rất hân hạnh được đón tiếp quý anh/chị và các bạn trong hai ngày cưới tại Quảng Ninh và Hà Nội.
     </p>
   </section>
 
-  <!-- Bộ ảnh -->
-  <section class="section">
-    <div class="section-title">Khoảnh khắc của chúng mình</div>
-    <div class="gallery">
-      <img src="bride.JPG" alt="Cô dâu" />
-      <img src="groom.JPG" alt="Chú rể" />
-      <img src="couple-1.JPG" alt="Cặp đôi" />
-      <img src="couple-2.JPG" alt="Cặp đôi" />
+  <!-- ALBUM -->
+  <section class="section-card" id="album">
+    <div class="section-label">Album nhỏ</div>
+    <div class="section-title">Một vài khoảnh khắc của chúng mình</div>
+
+    <div class="gallery-grid">
+      <img src="couple-1.JPG" alt="Ảnh cưới 1">
+      <img src="couple-2.JPG" alt="Ảnh cưới 2">
+      <img src="bride.JPG" alt="Cô dâu">
+      <img src="groom.JPG" alt="Chú rể">
     </div>
+
+    <p class="note">
+      Hy vọng khi xem những tấm hình này, bạn sẽ cảm nhận được một chút niềm vui và hạnh phúc 
+      mà chúng mình đang có. 💍
+    </p>
   </section>
 
   <footer>
-    <p>
-      Với tất cả yêu thương,
-    </p>
-    <p>
-      <strong>Mạnh Hùng &amp; Phạm Huyền</strong>
-    </p>
+    Với tất cả yêu thương,<br />
+    <strong>Mạnh Hùng &amp; Phạm Huyền</strong>
   </footer>
 </div>
 
-<!-- Nhạc nền -->
+<!-- MUSIC -->
 <audio id="bg-music" src="bg-music.mp3" loop></audio>
 
 <div class="music-toggle paused" id="musicToggle">
@@ -389,20 +566,18 @@
     const audio = document.getElementById("bg-music");
     const toggle = document.getElementById("musicToggle");
     const label = document.getElementById("musicLabel");
-
     let isPlaying = false;
 
     function play() {
       if (!audio) return;
-      audio
-        .play()
+      audio.play()
         .then(() => {
           isPlaying = true;
           toggle.classList.remove("paused");
           label.textContent = "Đang phát";
         })
         .catch(() => {
-          // Có thể bị chặn autoplay – người dùng bấm thêm lần nữa là được
+          // bị chặn autoplay thì bấm lại 1 lần nữa là được
         });
     }
 
